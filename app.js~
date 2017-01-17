@@ -29,8 +29,6 @@ server.connection({
 server.register(
    [
 
-//register the user plugi
-
 
        {
 
@@ -41,6 +39,15 @@ server.register(
                                 }
 
        },
+	{
+
+           register    :   require('./routes/artsfirstfilled.js'),  // register by providing the path of the adduser.js file
+
+           options     :   {
+
+                                }
+
+       },  
 	{
 
            register    :   require('./routes/artsfirstfilled.js'),  // register by providing the path of the adduser.js file

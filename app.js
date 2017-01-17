@@ -47,6 +47,15 @@ server.register(
 
                                 }
 
+       },  
+	{
+
+           register    :   require('./routes/artslastfilled.js'),  // register by providing the path of the adduser.js file
+
+           options     :   {
+
+                                }
+
        },   
               
 	{
