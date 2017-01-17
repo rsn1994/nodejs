@@ -17,73 +17,64 @@ var colcde=encodeURIComponent(request.params.code);
            
     db.connection.query('SELECT * FROM artsfull WHERE colCode=? ORDER BY id ASC',[colcde], function(err, rows,   fields) {
   if (err) throw err;
-var idata=rows[0];
-var initoc=rows[0].oc;
-var initbc=rows[0].bc;
-var initbcm=rows[0].bcm;
-var initmbc=rows[0].mbc;
-var initsc=rows[0].sc;
-var initsca=rows[0].sca;
-var initst=rows[0].st;
-var inittotsa=rows[0].totsa;
 var sts = new Array();
-var ooc="NOT FILLED TILL NOW";
-var obc="NOT FILLED TILL NOW";
-var obcm="NOT FILLED TILL NOW";
-var ombc="NOT FILLED TILL NOW";
-var osc="NOT FILLED TILL NOW";
-var osca="NOT FILLED TILL NOW";
-var ost="NOT FILLED TILL NOW";
-var ototsa="NOT FILLED TILL NOW";
+var ooc=" seats available";
+var obc=" seats available";
+var obcm=" seats available";
+var ombc=" seats available";
+var osc=" seats available";
+var osca=" seats available";
+var ost=" seats available";
+var ototsa=" seats available";
 for(var i=0;i<rows.length;i++)
 {
-if(rows[i].oc!=initoc){
+if(rows[i].oc==0){
 ooc=rows[i].idate+rows[i].times;
 break;
 }
 }
 for(var j=0;j<rows.length;j++)
 {
-if(rows[j].bc!=initbc){
+if(rows[j].bc==0){
 obc=rows[j].idate+rows[j].times;
 break;
 }}
 for(var k=0;k<rows.length;k++)
 {
-if(rows[k].bcm!=initbcm)
+if(rows[k].bcm==0)
 {
 obcm=rows[k].idate+rows[k].times;
 break;
 }}
 for(var l=0;l<rows.length;l++)
 {
-if(rows[l].mbc!=initmbc)
+if(rows[l].mbc==0)
 {
 ombc=rows[l].idate+rows[l].times;
 break;
 }}
 for(var m=0;m<rows.length;m++)
 {
-if(rows[m].sc!=initsc){
+if(rows[m].sc==0){
 osc=rows[m].idate+rows[m].times;
 break;
 }}
 for(var n=0;n<rows.length;n++)
 {
-if(rows[n].sca!=initsca)
+if(rows[n].sca==0)
 {
 osca=rows[n].idate+rows[n].times;
 break;
 }}
 for(var o=0;o<rows.length;o++)
 {
-if(rows[o].st!=initst){
+if(rows[o].st==0){
 ost=rows[o].idate+rows[o].times;
 break;
 }}
 for(var p=0;p<rows.length;p++)
 {
-if(rows[p].totsa!=inittotsa){
+if(rows[p].totsa==0){
 ototsa=rows[p].idate+rows[p].times;
 break;
 }}
