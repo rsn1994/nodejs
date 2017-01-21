@@ -21,8 +21,10 @@ exports.register = function(server,options,next)
         payload: {
 	    firstname: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
             lastname: Joi.string().required(),
-	    gender: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
-            username: Joi.string().required(),
+	    phone: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
+            tenth: Joi.number().required(),
+	    twelfth: Joi.number().required(),
+	    username: Joi.string().required(),
             password: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
             email: Joi.string().email().required() //ensures to be mandatory filled
         }

@@ -15,7 +15,7 @@ exports.register = function(server,options,next)
            config: {
 
                   tags : ['api'], // let it be here for now. I will explain it later in this blog
-		//auth:false,
+		auth:false,
                // We use Joi plugin to validate request
 	validate: {
         payload: {

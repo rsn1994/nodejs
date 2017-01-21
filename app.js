@@ -30,74 +30,19 @@ server.connection({
 
 server.register([
 
- {register    :   require('./routes/login.js')},
+{register    :   require('./routes/login.js')},
 {register    :   require('./routes/register.js')},
-	{
-
-           register    :   require('./routes/artsfirstfilled.js')  
-
-           
-
-       },  
-
- 
-  
-	{
-
-           register    :   require('./routes/artslastfilled.js'),  
-
-           
-       },   
-              
-	{
-
-           register    :   require('./routes/artsinsertfull.js'),  
-
-           
-
-       }, 
-	
-	{
-
-           register    :   require('./routes/artsgetbycol.js'), 
-
-           
-       },
-	{
-
-           register    :   require('./routes/artsgetfilled.js'),  
-
-         
-
-       }, 
-	{
-
-           register    :   require('./routes/artsgetvacant.js'),  
-
-          
-
-       },
-	{
-
-           register    :   require('./routes/artsgetfilledsession.js'),  
-
-          
-       },
-	{
-
-           register    :   require('./routes/artsgetbycolstatus.js'),  
-
-
-       },
-	{
-
-           register    :   require('./routes/get.js'), 
-
-           
-
-       },  
-	     
-
+{register    :   require('./routes/update.js')},
+{register    :   require('./routes/artsfirstfilled.js')},
+{register    :   require('./routes/artslastfilled.js')}, 
+{register    :   require('./routes/artsinsertfull.js')},
+{register    :   require('./routes/artsgetbycol.js')},   
+{register    :   require('./routes/artsgetfilled.js')},
+{register    :   require('./routes/artsgetvacant.js')},
+{register    :   require('./routes/artsgetfilledsession.js')},              
+{register    :   require('./routes/artsgetbycolstatus.js')},
+{register    :   require('./routes/get.js')},              
+		
 ]
 
 );
