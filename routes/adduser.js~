@@ -1,4 +1,4 @@
-var addContl = require('../controllers/addusercontroller.js'); // include our new controller
+var addContl = require('../controllers/logincontroller.js'); // include our new controller
 var Joi = require('joi');
 exports.register = function(server,options,next)
 
@@ -10,7 +10,7 @@ exports.register = function(server,options,next)
 
            method: 'POST',
 
-           path:   '/adduser',
+           path:   '/login',
 
            config: {
 
@@ -18,24 +18,7 @@ exports.register = function(server,options,next)
 
                // We use Joi plugin to validate request
 
-               validate: {
-
-                   payload: {
-
-                       // Both name and id are required fields
-sid: Joi.number().integer().min(4).max(10).required().description('the id for the student'),
-        fname: Joi.string().min(6).max(200).required().description('the First name for the student'),
-        lname: Joi.string().min(2).max(200).required().description('the Last name for the student'),
-        address: Joi.string().min(6).max(200).required().description('Address of the student'),
-	 city: Joi.string().min(6).max(200).required().description('City of the student'),
-	 dob: Joi.date().required().description('Date of birth the student'),
-	 sex: Joi.string().min(1).max(1).required().description('the sex of the student'),
-	 course: Joi.string().min(3).max(200).required().description('the Course of the student')
-
-                   }
-
-               }
-
+              
            },
 
            handler:  addContlObj. addUsers//  see here we removed a lot of codes and simply handed
@@ -50,7 +33,7 @@ sid: Joi.number().integer().min(4).max(10).required().description('the id for th
 
 exports.register.attributes = {
 
-   name    :'adduser-route',
+   name    :'login-route',
 
    version : '0.0.1'
 

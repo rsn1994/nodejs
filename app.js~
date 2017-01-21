@@ -5,11 +5,11 @@ const hapi                  = require('hapi');    // this wi
 const server                = new hapi.Server(); // cretae a server object
 
 const Pack                 =  require('./package'); // simple include our package.json file
-
+const jwt = require('jsonwebtoken'); 
 const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
-
+const secret = 'secret';
 //Now establish a connection using our server object.
 
 server.connection({
@@ -24,102 +24,75 @@ server.connection({
 
 });
 
+
+
 //register the user plugin
 
-server.register(
-   [
+server.register([
 
-
-       {
-
-           register    :   require('./routes/adduser.js'),  // register by providing the path of the adduser.js file
-
-           options     :   {
-
-                                }
-
-       },
+ {register    :   require('./routes/login.js')},
 	{
 
-           register    :   require('./routes/artsfirstfilled.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsfirstfilled.js')  
 
-           options     :   {
-
-                                }
+           
 
        },  
+
+ 
+  
 	{
 
-           register    :   require('./routes/artsfirstfilled.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artslastfilled.js'),  
 
-           options     :   {
-
-                                }
-
+           
        },   
               
 	{
 
-           register    :   require('./routes/artsinsertfull.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsinsertfull.js'),  
 
-           options     :   {
-
-                                }
+           
 
        }, 
 	
 	{
 
-           register    :   require('./routes/artsgetbycol.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsgetbycol.js'), 
 
-           options     :   {
-
-                                }
-
+           
        },
 	{
 
-           register    :   require('./routes/artsgetfilled.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsgetfilled.js'),  
 
-           options     :   {
-
-                                }
+         
 
        }, 
 	{
 
-           register    :   require('./routes/artsgetvacant.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsgetvacant.js'),  
 
-           options     :   {
-
-                                }
+          
 
        },
 	{
 
-           register    :   require('./routes/artsgetfilledsession.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/artsgetfilledsession.js'),  
 
-           options     :   {
+          
+       },
+	{
 
-                                }
+           register    :   require('./routes/artsgetbycolstatus.js'),  
+
 
        },
 	{
 
-           register    :   require('./routes/artsgetbycolstatus.js'),  // register by providing the path of the adduser.js file
+           register    :   require('./routes/get.js'), 
 
-           options     :   {
-
-                                }
-
-       },
-	{
-
-           register    :   require('./routes/get.js'),  // register by providing the path of the adduser.js file
-
-           options     :   {
-
-                                }
+           
 
        },  
 	     
@@ -144,3 +117,14 @@ server.register([
             }
         });
     });
+server.register(require('hapi-auth-jwt'), (err) => {
+
+  // We're giving the strategy both a name
+  // and scheme of 'jwt'
+  server.auth.strategy('jwt', 'jwt', {
+    key: secret,
+    verifyOptions: { algorithms: ['HS256'] }
+  });
+ server.auth.default('jwt');
+});
+

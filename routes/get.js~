@@ -13,7 +13,7 @@ exports.register = function (server,options,next)
 
            path: '/arts/get',
 	 
-
+	config: { auth: 'jwt' },
           handler: function (request, reply) {
 
            

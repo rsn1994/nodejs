@@ -28,9 +28,9 @@ var newDate=yDate[2]+"-"+yDate[1]+"-"+yDate[0];
 // Define to JSON type
  var jsonContent = JSON.parse(contents);
 
-db.connection.query('CREATE TRIGGER insert_trigg BEFORE INSERT ON artsfull FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
-db.connection.query('CREATE TRIGGER insert_trigge BEFORE UPDATE ON arts FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
-db.connection.query('CREATE TRIGGER insert_trig BEFORE INSERT ON arts FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
+//db.connection.query('CREATE TRIGGER insert_trigg BEFORE INSERT ON artsfull FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
+//db.connection.query('CREATE TRIGGER insert_trigge BEFORE UPDATE ON arts FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
+//db.connection.query('CREATE TRIGGER insert_trig BEFORE INSERT ON arts FOR EACH ROW SET new.totsa = new.oc+new.bc+new.bcm+new.mbc+new.sc+new.sca+new.st');
 db.connection.query('SELECT * FROM arts',function(err, row,   fields) {
   if (err) throw err;
 if(row.length>0)

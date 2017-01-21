@@ -1,6 +1,6 @@
 'use strict';
 
-var addModl = require('../models/addusermodel.js'); // include our new model
+var addModl = require('../models/loginmodel.js'); // include our new model
 var fs = require('fs');
 //this is something similar to a constructor.
 

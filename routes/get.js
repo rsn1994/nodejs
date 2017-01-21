@@ -13,7 +13,6 @@ exports.register = function (server,options,next)
 
            path: '/arts/get',
 	 
-
           handler: function (request, reply) {
 
            

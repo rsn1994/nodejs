@@ -1,6 +1,6 @@
 'use strict';
 
-var addModl = require('../models/addusermodel.js'); // include our new model
+var addModl = require('../models/loginmodel.js'); // include our new model
 var fs = require('fs');
 //this is something similar to a constructor.
 
@@ -15,7 +15,7 @@ function addUserController()
 addUserController.prototype.addUsers = function(request,reply)
 
            {
-	var obj = JSON.parse(fs.readFileSync('05-08-2016_6-00PM.json', 'utf8'));
+	var obj = JSON.parse(fs.readFileSync('json', 'utf8'));
                   reply(obj);
 console.log(obj);
                    var  addModlObj =  new addModl();  // our model object
