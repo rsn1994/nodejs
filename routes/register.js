@@ -1,6 +1,7 @@
 // include our new controller
 var Joi = require('joi');
 const db = require('../database.js');
+var bcrypt = require('bcrypt');
 exports.register = function(server,options,next)
 
 {
@@ -36,7 +37,11 @@ exports.register = function(server,options,next)
         // var fal=0;
 	//db.connection.query('CREATE TRIGGER instigg BEFORE INSERT ON login FOR EACH ROW SET new.active =?',fal);
 	//if (err) throw err;
+	var pass=request.payload.password;
+	var hash = bcrypt.hashSync(pass, 10);
+	request.payload.password=hash;
 	var post=request.payload;
+	
 	 db.connection.query('INSERT INTO login set ?',post, function(err, rows,   fields) {
         if (err) throw err;
  	else

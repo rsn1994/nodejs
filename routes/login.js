@@ -3,6 +3,7 @@ var Joi = require('joi');
 const db = require('../database.js');
 const secret = 'secret';
 const jwt = require('jsonwebtoken');
+var bcrypt = require('bcrypt');
 exports.register = function(server,options,next)
 
 {
@@ -39,7 +40,7 @@ exports.register = function(server,options,next)
   if (err) throw err;
  if (rows.length <= 0){
                   reply({}).code(200);
-              } else if(request.payload.password== rows[0].password){
+              } else if(bcrypt.compareSync(request.payload.password,rows[0].password)){
 			//reply({status:"valid"});					  
 		let username = rows[0].username;
                   reply({token : createToken(username),
