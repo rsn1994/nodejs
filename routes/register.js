@@ -1,6 +1,9 @@
 // include our new controller
 var Joi = require('joi');
 const db = require('../database.js');
+const secret = 'secret';
+const jwt = require('jsonwebtoken');
+Common = require('./common.js');
 var bcrypt = require('bcrypt');
 exports.register = function(server,options,next)
 
@@ -16,6 +19,7 @@ exports.register = function(server,options,next)
            config: {
 
                   tags : ['api'], // let it be here for now. I will explain it later in this blog
+		description: 'new user registration',		
 		auth: false,
                // We use Joi plugin to validate request
 	validate: {
@@ -43,10 +47,14 @@ exports.register = function(server,options,next)
 	var post=request.payload;
 	
 	 db.connection.query('INSERT INTO login set ?',post, function(err, rows,   fields) {
-        if (err) throw err;
+        if (err) {reply({success: false, message: 'registration failed',code : 400});
+throw err;}
  	else
-reply({status:"success"}).code(202);
- 
+{
+let username = request.payload.username;
+Common.sentMailVerificationLink(request.payload.email,jwt.sign({ username: username }, secret, { algorithm: 'HS256'} ));
+                reply({success: true, message: 'new user registered but need to verify',code : 200});
+ }
   
 });
     }

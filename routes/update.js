@@ -24,7 +24,10 @@ exports.register = function(server,options,next)
 	    address: Joi.string().required(), 
 	    school: Joi.string().required(),
             city: Joi.string().required()
-        }
+        },
+headers: Joi.object({
+ 'authorization': Joi.string().required()
+				    }).unknown()
     },
               
            },
@@ -33,9 +36,10 @@ exports.register = function(server,options,next)
         
 	var post=request.payload;
 	 db.connection.query('INSERT INTO profile set ?',post, function(err, rows,   fields) {
-        if (err) throw err;
+        if (err) { reply({status:"error occured"}).code(402);
+throw err;}
  	else
-reply({status:"success"}).code(202);
+reply({status:"successfully updated"}).code(202);
  
   
 });

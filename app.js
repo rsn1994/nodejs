@@ -31,6 +31,7 @@ server.connection({
 server.register([
 
 {register    :   require('./routes/login.js')},
+{register    :   require('./routes/verify.js')},
 {register    :   require('./routes/register.js')},
 {register    :   require('./routes/update.js')},
 {register    :   require('./routes/artsfirstfilled.js')},
