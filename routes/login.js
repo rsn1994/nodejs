@@ -48,7 +48,7 @@ exports.register = function(server,options,next)
 else{				  
 		let email = rows[0].email;
                   reply({success:true, message: 'login success',token : createToken(email),
-                           user : email }).code(200);
+                           email : email }).code(200);
 }
 
 }
