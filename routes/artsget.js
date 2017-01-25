@@ -45,7 +45,7 @@ exports.register = function (server,options,next)
 
 exports.register.attributes = {
 
-   name    :'user-get',
+   name    :'user-artsget',
 
    version : '0.0.1'
 

@@ -42,7 +42,16 @@ server.register([
 {register    :   require('./routes/artsgetvacant.js')},
 {register    :   require('./routes/artsgetfilledsession.js')},              
 {register    :   require('./routes/artsgetbycolstatus.js')},
-{register    :   require('./routes/get.js')},              
+{register    :   require('./routes/artsget.js')}, 
+{register    :   require('./routes/engfirstfilled.js')},
+{register    :   require('./routes/englastfilled.js')}, 
+{register    :   require('./routes/enginsertfull.js')},
+{register    :   require('./routes/enggetbycol.js')},   
+{register    :   require('./routes/enggetfilled.js')},
+{register    :   require('./routes/enggetvacant.js')},
+{register    :   require('./routes/enggetfilledsession.js')},              
+{register    :   require('./routes/enggetbycolstatus.js')},
+{register    :   require('./routes/engget.js')},             
 		
 ]
 
