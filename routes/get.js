@@ -14,7 +14,7 @@ exports.register = function (server,options,next)
            path: '/arts/get',
 	 config: { 
 				tags: ['api'], 
-				auth: false,
+				//auth: false,
 				description: 'arts list',
 				
         handler: function (request, reply) {

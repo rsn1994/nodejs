@@ -35,11 +35,11 @@ exports.register = function(server,options,next)
 	if(decoded === undefined)  reply("invalid verification link");
 else
 {
-           db.connection.query('SELECT * FROM login WHERE username = ? ',decoded.username, function(err, rows,   fields) {
+           db.connection.query('SELECT * FROM login WHERE email = ? ',decoded.email, function(err, rows,   fields) {
   if (err) throw err;
 if (rows[0].active === 1) reply({success: true,message :"account is already verified",code :100});
 else {
-db.connection.query('UPDATE login SET active = 1  WHERE username = ? ',decoded.username, function(err, rows) {
+db.connection.query('UPDATE login SET active = 1  WHERE email = ? ',decoded.email, function(err, rows) {
 if(err)throw err;
 reply({success: true,message :"account successfully verified",code :200});
 });

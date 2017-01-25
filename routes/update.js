@@ -19,7 +19,7 @@ exports.register = function(server,options,next)
                // We use Joi plugin to validate request
 	validate: {
         payload: {
-	    username: Joi.string().required(), 
+	    email: Joi.string().email().required(), 
             qualification: Joi.string().required(),
 	    address: Joi.string().required(), 
 	    school: Joi.string().required(),

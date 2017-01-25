@@ -19,7 +19,7 @@ exports.register = function(server,options,next)
                // We use Joi plugin to validate request
 	validate: {
         payload: {
-	    username: Joi.string().required(), 
+	    email: Joi.string().email().required(), 
             qualification: Joi.string().required(),
 	    address: Joi.string().required(), 
 	    school: Joi.string().required(),
@@ -36,9 +36,10 @@ headers: Joi.object({
         
 	var post=request.payload;
 	 db.connection.query('INSERT INTO profile set ?',post, function(err, rows,   fields) {
-        if (err) throw err;
+        if (err) { reply({status:"error occured"}).code(402);
+throw err;}
  	else
-reply({status:"success"}).code(202);
+reply({status:"successfully updated"}).code(202);
  
   
 });

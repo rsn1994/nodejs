@@ -29,9 +29,9 @@ exports.register = function(server,options,next)
 	    phone: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
             tenth: Joi.number().required(),
 	    twelfth: Joi.number().required(),
-	    username: Joi.string().required(),
+	    email: Joi.string().email().required(),
             password: Joi.string().required(), //ensures to be a valid email address and mandatory filled 
-            email: Joi.string().email().required() //ensures to be mandatory filled
+             //ensures to be mandatory filled
         }
     },
               
@@ -51,8 +51,8 @@ exports.register = function(server,options,next)
 throw err;}
  	else
 {
-let username = request.payload.username;
-Common.sentMailVerificationLink(request.payload.email,jwt.sign({ username: username }, secret, { algorithm: 'HS256'} ));
+let email = request.payload.email;
+Common.sentMailVerificationLink(request.payload.email,jwt.sign({ email: email }, secret, { algorithm: 'HS256'} ));
                 reply({success: true, message: 'new user registered but need to verify',code : 200});
  }
   
